@@ -1,0 +1,7 @@
+<h1>Success!</h1>
+<ul>
+    <% Object.entries(hero).forEach(entry=>{ %>
+    <% let [key, value] = entry; %>
+    <li> <b><%- key %></b> : <%- value %> </li>
+<% }); %> 
+</ul>
