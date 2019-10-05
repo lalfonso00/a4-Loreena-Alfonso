@@ -1,21 +1,22 @@
 const { check } = require('express-validator');
-const { validator } = require('validator');
+const { query } = require('express-validator');
+const validator = require('validator');
 
 const powersCheck = (value) => {
+    //console.log(Array.isArray(value))
     return Array.isArray(value)
-
 };
 
-//Custom sanitizer: Go through each element in the powers array and escape its value. 
-//To do this, install the validator module and use its method validator.escape(value).
 
+const powersSanitizer = (powersValue) => {
+    if (Array.isArray(powersValue)) {
+        let newValues = powersValue.map((element) => {
+            return validator.escape(element);
+        });
+        return newValues
+    }
+};
 
-const powersSanitizer = (value) => {
-    value.forEach((element) => {
-        element.escape(value);
-    });
-    return value
-}
 
 exports.heroesValidators = [
     //validatiors for inputs will go here 
@@ -36,6 +37,13 @@ exports.heroesValidators = [
     ,
     check('powers', 'Please check at least two powers')
     .custom(powersCheck)
-    //.customSanitizer(powersSanitizer)
+    .customSanitizer(powersSanitizer)
 
-]
+];
+
+exports.colorsValidators = [
+    query('color', 'Please enter a valid color')
+    .isHexColor()
+    .escape()
+
+];

@@ -2,6 +2,6 @@
 <ul>
     <% Object.entries(hero).forEach(entry=>{ %>
     <% let [key, value] = entry; %>
-    <li> <b><%- key %></b> : <%- value %> </li>
+    <li> <b><%= key %></b> : <%- value %> </li>
 <% }); %> 
 </ul>

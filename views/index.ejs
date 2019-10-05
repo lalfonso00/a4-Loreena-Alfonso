@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="style.css" type="text/css" />
     <title>a4-Loreena-Alfonso</title>
 </head>
- <% let colorSet = color %>
- <%-color%>
-<body>
+ <% let colorSet = style.color%>
+ <%colorSet%>
+ 
+<body style = "color :<%=`${colorSet}`%>">
     <h1>Forms and validation</h1>
     <h2>Create a new hero</h2>
 <!-- action represents an endpoint, method-->    
@@ -28,23 +29,23 @@
             <legend> Choose at least 2 Powers:</legend>
             <label>
                 Flight
-                <input type= "checkbox" name ="powers"/>
+                <input type= "checkbox" name ="powers" value="Flight"/>
             </label>
             <label>
                 Invisibility
-                <input type= "checkbox" name ="powers"/>
+                <input type= "checkbox" name ="powers" value="Invisibility"/>
             </label>
             <label>
                 Elasticity
-                <input type= "checkbox" name ="powers"/>
+                <input type= "checkbox" name ="powers" value="Elasticity"/>
             </label>
             <label>
                 Electricity 
-                <input type= "checkbox" name ="powers"/>
+                <input type= "checkbox" name ="powers" value="Electricity"/>
             </label>
             <label> 
                 Mind-Reading
-                <input type= "checkbox" name ="powers"/>
+                <input type= "checkbox" name ="powers" value="Mind-reading"/>
             </label>
             
             
@@ -59,7 +60,7 @@
     <form method ="GET" action ="/">
         <label>
             Choose the color (hex value):
-           <input type="text" name="color"/> 
+           <input type="color" name="color"/> 
         </label>
         
         <input type="submit" value="Submit"/>
@@ -67,4 +68,4 @@
     
     
 </body>
-</html>
+</html> 

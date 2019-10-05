@@ -9,17 +9,18 @@ app.set('view engine', 'ejs');
 const { validationResult } = require('express-validator');
 
 const { heroesValidators } = require(__dirname + "/validators.js");
+const { colorsValidators } = require(__dirname + "/validators.js");
 
 app.use(express.urlencoded({ extended: true }));
 
 
 
 
-app.get('/', (req, res) => {
+app.get('/', colorsValidators, (req, res) => {
 
-    let color = req.query.color;
-    console.log(color);
-    res.render('index', { color: '#000000' })
+    let userColor = req.query.color;
+    console.log(userColor);
+    res.render('index', { style: { color: userColor } })
 });
 
 app.post('/heroes', heroesValidators, (req, res) => {
@@ -35,8 +36,6 @@ app.post('/heroes', heroesValidators, (req, res) => {
         res.render('heroes-success', { hero: req.body });
     }
 });
-
-
 
 
 app.set('port', 8080);
